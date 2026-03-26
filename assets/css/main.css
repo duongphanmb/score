@@ -52,6 +52,8 @@ body {
     overscroll-behavior: contain;
     animation: fadeIn 0.6s ease forwards;
     opacity: 1;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
 main {
@@ -266,7 +268,7 @@ input:focus {
 input[type="text"] {
     flex: 2;
     min-width: clamp(80px, 28vw, 200px);
-    min-height: 45px;
+    min-height: 42px;
     font-size: var(--font-base);
     padding: var(--s-sm);
 }
@@ -274,7 +276,7 @@ input[type="text"] {
 input[type="number"],
 input[inputmode="numeric"] {
     width: clamp(40px, 12vw, 64px);
-    min-height: 45px;
+    min-height: 42px;
     text-align: center;
     appearance: textfield;
     border-radius: 0;
@@ -306,7 +308,7 @@ article {
         margin 0.2s,
         box-shadow 0.2s;
     margin-bottom: var(--s-sm);
-    min-height: 90px;
+    min-height: 85px;
 }
 
 article > input[type="text"] {
@@ -323,14 +325,14 @@ article > span {
 
 article > button[data-calc] {
     order: 3;
-    min-width: 40px;
-    min-height: 40px;
+    min-width: 38px;
+    min-height: 38px;
 }
 
 article > button {
     order: 4;
-    min-width: 35px;
-    min-height: 35px;
+    min-width: 33px;
+    min-height: 33px;
 }
 
 article > span,
@@ -922,7 +924,7 @@ noscript .noscript-warning p {
     padding: var(--s-md) var(--s-lg);
     background: var(--object);
     border-radius: var(--radius);
-    min-height: 90px;
+    min-height: 85px;
 }
 
 .history-row-top {

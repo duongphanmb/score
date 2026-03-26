@@ -17,12 +17,26 @@ const save = () =>
 if (players.length === 0) {
     players = [
         { name: "Dương", score: 0 },
-        { name: "Thanh`", score: 0 },
+        { name: "Nghien", score: 0 },
         { name: "Minh", score: 0 },
         { name: "Thắng", score: 0 }
     ];
     save();
 }
+
+// Prevent double-tap zoom on mobile
+let lastTouchEnd = 0;
+document.addEventListener("touchend", (e) => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+        e.preventDefault();
+    }
+    lastTouchEnd = now;
+}, false);
+
+document.addEventListener("dblclick", (e) => {
+    e.preventDefault();
+});
 
 function debounce(fn, delay) {
     let timer;
