@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+        <title>Score Tracker</title>
+        <meta
+            name="description"
+            content="Score Tracker - Keep track of scores during game night. Perfect for board games, card games, and any multiplayer competition. No signup required."
+        />
+        <meta name="author" content="duongph1" />
+        <link
+            rel="icon"
+            type="image/png"
+            href="./assets/icons/favicon/favicon-96x96.png"
+            sizes="96x96"
+        />
+        <link
+            rel="icon"
+            type="image/svg+xml"
+            href="./assets/icons/favicon/favicon.svg"
+        />
+        <link rel="shortcut icon" href="./assets/icons/favicon/favicon.ico" />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="./assets/icons/favicon/apple-touch-icon.png"
+        />
+        <link rel="manifest" href="./site.webmanifest" />
+        <meta name="apple-mobile-web-app-title" content="Score Tracker" />
+
+        <link rel="stylesheet" href="./assets/css/main.css" />
+        <link rel="stylesheet" href="./assets/css/fonts.css" />
+
+        <script src="./assets/js/main.js" defer></script>
+    </head>
+    <body>
+        <main>
+            <nav>
+                <div class="nav-inner">
+                    <button id="random" aria-label="Pick a random player">
+                        <img src="./assets/icons/hexagon-dice.svg" alt="" />
+                    </button>
+                    <button id="add" aria-label="Add a new player">
+                        <img src="./assets/icons/user-plus.svg" alt="" />
+                    </button>
+                    <button
+                        id="reset-scores"
+                        aria-label="Reset all scores (double click)"
+                        data-action="reset-scores"
+                    >
+                        <img src="./assets/icons/restart.svg" alt="" />
+                    </button>
+                    <button
+                        id="reset"
+                        aria-label="Delete all players (double click)"
+                        data-action="reset"
+                    >
+                        <img src="./assets/icons/trash.svg" alt="" />
+                    </button>
+                    <button id="ranking" aria-label="Show current rankings">
+                        <img src="./assets/icons/leaderboard.svg" alt="" />
+                    </button>
+                    <button id="history" aria-label="Show score history">
+                        <img src="./assets/icons/clock.svg" alt="" />
+                    </button>
+                    <button id="total" aria-label="Show total score">
+                        <img src="./assets/icons/sum.svg" alt="" />
+                    </button>
+                </div>
+            </nav>
+            <section id="list"></section>
+        </main>
+        <footer>
+            <div class="footer-left">
+                © <a href="/">duongph1</a>. All rights reserved.
+            </div>
+            <div id="total-display">Total: 0 pts</div>
+            <button id="help" aria-label="Show help">
+                <img src="./assets/icons/question-mark.svg" alt="" />
+            </button>
+        </footer>
+        <noscript>
+            <div class="noscript-warning">
+                <img src="./assets/icons/warning-triangle.svg" alt="Warning" />
+                <p>Please enable JavaScript to use this application.</p>
+            </div>
+        </noscript>
+        <div id="ranking-overlay" hidden>
+            <div class="ranking-backdrop"></div>
+            <div class="ranking-modal">
+                <h2>Ranking</h2>
+                <div id="ranking-content"></div>
+                <button id="ranking-close">Close</button>
+            </div>
+        </div>
+        <div id="calc-overlay" hidden>
+            <div class="calc-backdrop"></div>
+            <div class="calc-modal">
+                <h2>Update score</h2>
+
+                <div class="calc-info-grid">
+                    <span class="calc-info-label">Player</span>
+                    <span class="calc-info-value" id="calc-player-name"></span>
+                    <span class="calc-info-label">Actual Score</span>
+                    <span class="calc-info-value" id="calc-actual-score"></span>
+                </div>
+
+                <div class="calc-preview-container">
+                    <div class="calc-preview-label">New Score</div>
+                    <div id="calc-preview">—</div>
+                </div>
+
+                <input
+                    id="calc-input"
+                    type="text"
+                    inputmode="decimal"
+                    placeholder="e.g., +30, -1, *2, /3"
+                    autocomplete="off"
+                />
+                <div class="calc-buttons">
+                    <button id="calc-cancel">Cancel</button>
+                    <button id="calc-confirm">Confirm</button>
+                </div>
+                <br />
+            </div>
+        </div>
+        <div id="help-overlay" hidden>
+            <div class="help-backdrop"></div>
+            <div class="help-modal">
+                <h2>How to use</h2>
+                <div id="help-content">
+                    <div class="info-item">
+                        <img src="./assets/icons/user-plus.svg" alt="" />
+                        <span>Add a new player</span>
+                    </div>
+                    <div class="info-item">
+                        <img src="./assets/icons/math-book.svg" alt="" />
+                        <span>Update score</span>
+                    </div>
+                    <div class="info-item">
+                        <img src="./assets/icons/user-xmark.svg" alt="" />
+                        <span>Remove player (double click)</span>
+                    </div>
+                    <div class="info-item">
+                        <img src="./assets/icons/restart.svg" alt="" />
+                        <span>Reset all scores (double click)</span>
+                    </div>
+                    <div class="info-item">
+                        <img src="./assets/icons/trash.svg" alt="" />
+                        <span>Delete all players (double click)</span>
+                    </div>
+                    <div class="info-item">
+                        <img src="./assets/icons/leaderboard.svg" alt="" />
+                        <span>Show current rankings</span>
+                    </div>
+                    <div class="info-item">
+                        <img src="./assets/icons/clock.svg" alt="" />
+                        <span>Show score history</span>
+                    </div>
+                    <div class="info-item">
+                        <img src="./assets/icons/sum.svg" alt="" />
+                        <span>Show total score</span>
+                    </div>
+                    <div class="info-item">
+                        <img src="./assets/icons/hexagon-dice.svg" alt="" />
+                        <span>Pick a random player</span>
+                    </div>
+                </div>
+                <button id="help-close">Close</button>
+            </div>
+        </div>
+        <div id="history-overlay" hidden>
+            <div class="history-backdrop"></div>
+            <div class="history-modal">
+                <h2>Score History</h2>
+                <div id="history-content"></div>
+                <button id="history-close">Close</button>
+            </div>
+        </div>
+        <div id="total-overlay" hidden>
+            <div class="total-backdrop"></div>
+            <div class="total-modal">
+                <h2>Total Score</h2>
+                <div id="total-content"></div>
+                <button id="total-close">Close</button>
+            </div>
+        </div>
+    </body>
+</html>
