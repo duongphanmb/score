@@ -265,7 +265,7 @@ input:focus {
 
 input[type="text"] {
     flex: 2;
-    min-width: clamp(100px, 35vw, 250px);
+    min-width: clamp(80px, 28vw, 200px);
     min-height: 45px;
     font-size: var(--font-base);
     padding: var(--s-sm);
@@ -273,7 +273,7 @@ input[type="text"] {
 
 input[type="number"],
 input[inputmode="numeric"] {
-    width: clamp(50px, 15vw, 80px);
+    width: clamp(40px, 12vw, 64px);
     min-height: 45px;
     text-align: center;
     appearance: textfield;
@@ -780,6 +780,34 @@ aside.fadeOut {
 
 .calc-modal input {
     font-size: var(--font-base);
+    width: 80%;
+    margin: 0 auto;
+    display: block;
+}
+
+.calc-keypad {
+    display: flex;
+    gap: var(--s-sm);
+    justify-content: center;
+    margin: var(--s-sm) 0;
+}
+
+.calc-keypad button {
+    flex: 1;
+    padding: var(--s-md);
+    background: var(--object);
+    color: var(--text);
+    border: none;
+    border-radius: var(--radius);
+    font-size: var(--font-lg);
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+    max-width: 60px;
+}
+
+.calc-keypad button:hover {
+    background: var(--accent);
 }
 
 .calc-buttons {

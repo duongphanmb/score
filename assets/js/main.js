@@ -17,7 +17,7 @@ const save = () =>
 if (players.length === 0) {
     players = [
         { name: "Dương", score: 0 },
-        { name: "Thành", score: 0 },
+        { name: "Thanh`", score: 0 },
         { name: "Minh", score: 0 },
         { name: "Thắng", score: 0 }
     ];
@@ -771,6 +771,15 @@ document
 $("calc-confirm").addEventListener("click", confirmCalc);
 $("calc-cancel").addEventListener("click", closeCalc);
 document.querySelector(".calc-backdrop").addEventListener("click", closeCalc);
+
+document.querySelectorAll(".calc-keypad button").forEach(btn => {
+    btn.addEventListener("click", () => {
+        const input = $("calc-input");
+        input.value += btn.dataset.calcKey;
+        input.dispatchEvent(new Event("input", { bubbles: true }));
+        input.focus();
+    });
+});
 
 $("help-close").addEventListener("click", closeHelp);
 document.querySelector(".help-backdrop").addEventListener("click", closeHelp);
